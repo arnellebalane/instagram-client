@@ -1,8 +1,10 @@
 import React from 'react';
+import PostsList from './PostsList';
+import posts from './data/posts.json';
 
 function App() {
   return (
-    <h1>Hello World!</h1>
+    <PostsList posts={posts} />
   );
 }
 
