@@ -4,7 +4,9 @@ import posts from './data/posts.json';
 
 function App() {
   return (
-    <PostsList posts={posts} />
+    <div>
+      <PostsList posts={posts} />
+    </div>
   );
 }
 
