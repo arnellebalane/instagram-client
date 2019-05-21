@@ -12,7 +12,7 @@ function PostItem({data}) {
             <h5>{data.author.handle}</h5>
           </header>
 
-          <p><pre>{data.caption}</pre></p>
+          <pre><p>{data.caption}</p></pre>
         </main>
 
         <footer>
