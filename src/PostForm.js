@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { gql } from 'apollo-boost';
 import { Mutation } from 'react-apollo';
+import { GET_POSTS } from './App';
 
 const ADD_POST = gql`
   mutation ($caption: String!, $media_url: String!, $permalink: String!, $author_id: ID!) {
@@ -45,7 +46,30 @@ function PostForm() {
         const handleSubmit = (event) => {
           event.preventDefault();
           addPost({
-            variables: post
+            variables: post,
+            optimisticResponse: {
+              addPost: {
+                ...post,
+                __typename: 'Post',
+                id: String(Date.now()),
+                like_count: 0,
+                comments_count: 0,
+                author: {
+                  __typename: 'User',
+                  name: 'Arnelle Balane',
+                  handle: '@arnellebalane'
+                }
+              }
+            },
+            update(cache, result) {
+              const data = cache.readQuery({query: GET_POSTS});
+              cache.writeQuery({
+                query: GET_POSTS,
+                data: {
+                  posts: [...data.posts, result.data.addPost]
+                }
+              });
+            }
           });
 
           setPost(emptyPost());

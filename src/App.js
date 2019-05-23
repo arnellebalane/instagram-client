@@ -4,7 +4,7 @@ import { Query } from 'react-apollo';
 import PostForm from './PostForm';
 import PostsList from './PostsList';
 
-const GET_POSTS = gql`
+export const GET_POSTS = gql`
   query {
     posts {
       id
