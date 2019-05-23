@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
 
+function emptyPost() {
+  return {
+    caption: '',
+    media_url: '',
+    permalink: '',
+    author_id: ''
+  };
+}
+
 function PostForm() {
-  const [post, setPost] = useState({});
+  const [post, setPost] = useState(emptyPost());
 
   const handleFieldChange = (event) => {
     const {name, value} = event.target;
@@ -11,6 +20,8 @@ function PostForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(post);
+
+    setPost(emptyPost());
   };
 
   return (
@@ -18,16 +29,16 @@ function PostForm() {
       <h3>New Post</h3>
 
       <label>Caption</label>
-      <textarea name="caption" onChange={handleFieldChange} required></textarea>
+      <textarea name="caption" value={post.caption} onChange={handleFieldChange} required></textarea>
 
       <label>Media URL</label>
-      <input type="text" name="media_url" onChange={handleFieldChange} required />
+      <input type="text" name="media_url" value={post.media_url} onChange={handleFieldChange} required />
 
       <label>Permalink</label>
-      <input type="text" name="permalink" onChange={handleFieldChange} required />
+      <input type="text" name="permalink" value={post.permalink} onChange={handleFieldChange} required />
 
       <label>Author ID</label>
-      <input type="text" name="author_id" onChange={handleFieldChange} required />
+      <input type="text" name="author_id" value={post.author_id} onChange={handleFieldChange} required />
 
       <button>Create Post</button>
     </form>
