@@ -14,7 +14,7 @@ export const GET_POSTS = gql`
       media_url
       author {
         name
-        handle
+        username
       }
     }
   }
