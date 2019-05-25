@@ -9,7 +9,7 @@ function PostItem({data}) {
         <main>
           <header>
             <h4>{data.author.name}</h4>
-            <h5>{data.author.handle}</h5>
+            <h5>{data.author.username}</h5>
           </header>
 
           <pre><p>{data.caption}</p></pre>

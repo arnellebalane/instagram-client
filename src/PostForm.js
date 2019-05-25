@@ -4,7 +4,6 @@ function emptyPost() {
   return {
     caption: '',
     media_url: '',
-    permalink: '',
     author_id: ''
   };
 }
@@ -33,9 +32,6 @@ function PostForm() {
 
       <label>Media URL</label>
       <input type="text" name="media_url" value={post.media_url} onChange={handleFieldChange} required />
-
-      <label>Permalink</label>
-      <input type="text" name="permalink" value={post.permalink} onChange={handleFieldChange} required />
 
       <label>Author ID</label>
       <input type="text" name="author_id" value={post.author_id} onChange={handleFieldChange} required />
